@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/bootstrap.css}"rel="stylesheet"/>
+<title>Edit Product</title>
+</head>
+<body>
+<h1 align="center">Sưa thong tin</h1>
+	<form align="center" th:action="@{/editproduct}" th:object="${Product}" method="post">
+		<p>
+			ten san pham
+			<input type ="text" th:field="*{nameProduct}"/>
+		</p>	
+		<p>
+			<input type ="hidden" th:field="*{id}"/>
+		</p>	
+		<p>
+			Don gia
+			<input type ="text" th:field="*{unitPrice}"/>
+		</p>
+		<p>
+			So luong
+			<input type ="number" th:field="*{amount}"/>
+		</p>
+		<p>
+			<button class="btn btn-success">Sửa</button>
+		</p>
+	</form>	
+</body>
+</html>
