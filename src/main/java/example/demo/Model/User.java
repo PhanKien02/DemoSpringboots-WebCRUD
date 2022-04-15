@@ -6,24 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Data
-@Setter
-@Getter
 @Table(name = "users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotEmpty(message = "Hãy nhập userName")
 	@Column(name = "username")
 	private String userName;
+	@NotEmpty(message = "Hãy nhập password")
 	@Column(name = "passwords")
 	private String password;
+	@NotEmpty(message = "Hãy chọn vai trò")
 	@Column(name = "roles")
 	private String roles;
 	public String getUserName() {

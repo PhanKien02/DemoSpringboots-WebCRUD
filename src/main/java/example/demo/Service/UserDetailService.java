@@ -22,9 +22,8 @@ public class UserDetailService implements UserDetailsService {
         User user = userRepository.findByUserName(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Could not find user");
+            throw new UsernameNotFoundException("ten dang nhap khong ton tai");
         }
         return new MyUserDetail(user);
     }
-
 }

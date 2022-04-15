@@ -11,6 +11,7 @@
 		<p>
 			ten san pham
 			<input type ="text" th:field="*{nameProduct}"/>
+			<p style="color:red;" th:if="${#fields.hasErrors('nameProduct')}" th:errors="*{nameProduct}")></p>
 		</p>	
 		<p>
 			<input type ="hidden" th:field="*{id}"/>
@@ -18,10 +19,12 @@
 		<p>
 			Don gia
 			<input type ="text" th:field="*{unitPrice}"/>
+			<p style="color:red;" th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}")></p>
 		</p>
 		<p>
 			So luong
 			<input type ="number" th:field="*{amount}"/>
+			<p style="color:red;" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}")></p>
 		</p>
 		<p>
 			<button class="btn btn-success">Sửa</button>

@@ -23,16 +23,11 @@ public class ProductController {
 	ProductService productService;
 	@Autowired
 	ProductRepository productRepository;
-
-	@GetMapping("/index")
-	public String index() {
-		return "index";
-	}
-
+	
 	@GetMapping("/getproduct")
-	public String getProduct(Model model) {
-		model.addAttribute(productService.getProducts());
-		return "getproduct";
+	 public String getProduct(Model model) {
+	 model.addAttribute(productService.getProducts());
+	 return "getproduct";
 	}
 
 	@GetMapping("/addproduct")
@@ -46,7 +41,7 @@ public class ProductController {
 		if (result.hasErrors()) {
 			return "addproduct";
 		} else {
-			model.addAttribute("successMsg", "Them thanh cong!!");
+			model.addAttribute("successMsg", "Thêm sản phẩm thành công");
 			productService.addProduct(product);
 			return "redirect:/getproduct";
 		}
@@ -65,8 +60,14 @@ public class ProductController {
 	}
 
 	@PostMapping("/editproduct")
-	public String editProduct(@Valid @ModelAttribute("Product") Product product) {
-		productService.editProduct(product);
-		return "redirect:/getproduct";
+	public String editProduct(@Valid @ModelAttribute("Product") Product product , BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "editproduct";
+		} else {
+			model.addAttribute("successMsg", "sửa sản phẩm thành công");
+			productService.editProduct(product);
+			return "redirect:/getproduct";
+		}
+
 	}
 }

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<link th:href="@{/css/bootstrap.css}"rel="stylesheet"/>
-<title>Get Product</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+	<title>Get Product</title>
 </head>
+
 <body>
 	<h1 align="center">Product</h1>
-	<p align="center" th:text="${successMsg}" />
+	<span style="color:green;" align="center" th:text="${successMsg}"></span>
 	<table align="center">
 		<tr>
 			<th>San pham</th>
@@ -19,7 +21,7 @@
 			<td th:text="${product.unitPrice}" width="100"></td>
 			<td th:text="${product.amount}" width="100"></td>
 			<td><a th:href="@{'/delete?id=' +${product.id}}" class="btn btn-danger">-Xoa San Pham</a></td>
-			<td><a th:href="@{'/edit?id=' +${product.id}}" class="btn btn-primary">Sua San Pham</a></td>	
+			<td><a th:href="@{'/edit?id=' +${product.id}}" class="btn btn-primary">Sua San Pham</a></td>
 		</tr>
 		<tr>
 			<td><a align="center" th:href="@{/addproduct}" class="btn btn-success">Them san pham</a></td>
@@ -27,4 +29,5 @@
 		</tr>
 	</table>
 </body>
+
 </html>
