@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import example.demo.Service.ProductService;
 import example.demo.Model.Product;
-import example.demo.Repository.ProductRepository;
 
 @Controller
 public class ProductController {
 	@Autowired
 	ProductService productService;
-	@Autowired
-	ProductRepository productRepository;
 
 	@GetMapping("/getproduct")
 	public String getProduct(Model model) {
