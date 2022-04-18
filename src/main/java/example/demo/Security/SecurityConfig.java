@@ -41,13 +41,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()// Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                .antMatchers("/getproduct").hasRole("User")
-                .antMatchers("/getproduct", "/addproduct", "edit product", "deleteproduct").hasAnyRole("Admin")
+                // .antMatchers("/getproduct").access("hasAnyRole('User')")
+                // .antMatchers("/getproduct", "/addproduct", "edit product", "deleteproduct")
+                // .access("hasAnyRole('Admin')")
                 .and()
-                .authorizeRequests()
+                .authorizeRequests().and().exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .formLogin() // Cho phép người dùng xác thực bằng form login
-                .loginPage("/login") // trang login
+                // .loginPage("/login") // trang login
                 .failureUrl("/login?error")
                 .defaultSuccessUrl("/getproduct")
                 .permitAll() // Tất cả đều được truy cập vào địa chỉ này

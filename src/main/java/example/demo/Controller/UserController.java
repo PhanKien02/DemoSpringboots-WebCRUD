@@ -24,28 +24,27 @@ public class UserController {
 		return "hello";
 	}
 
+	// trong login
 	@GetMapping("/login")
 	public String loginpage(Model model) {
 		return "login";
 	}
 
-	@PostMapping("/loginSecurity")
-	public String login(User user) {
-		return "getproduct";
-
-	}
-
+	// trang đăng kí
 	@GetMapping("/Register")
 	public String Register(Model model) {
 		model.addAttribute("User", new User());
 		return "Register";
 	}
 
+	// đăng kí tk mới
 	@PostMapping("/Register")
 	public String Register(@ModelAttribute("User") User user) {
+		// ktra xem username đã đk chưa
 		if (userRepository.findByUserName(user.getUserName()) != null) {
 			return "Register";
 		} else {
+
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String encodedPassword = passwordEncoder.encode(user.getPassword());
 			user.setPassword(encodedPassword);

@@ -23,11 +23,11 @@ public class ProductController {
 	ProductService productService;
 	@Autowired
 	ProductRepository productRepository;
-	
+
 	@GetMapping("/getproduct")
-	 public String getProduct(Model model) {
-	 model.addAttribute(productService.getProducts());
-	 return "getproduct";
+	public String getProduct(Model model) {
+		model.addAttribute(productService.getProducts());
+		return "getproduct";
 	}
 
 	@GetMapping("/addproduct")
@@ -60,7 +60,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/editproduct")
-	public String editProduct(@Valid @ModelAttribute("Product") Product product , BindingResult result, Model model) {
+	public String editProduct(@Valid @ModelAttribute("Product") Product product, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "editproduct";
 		} else {
@@ -69,5 +69,16 @@ public class ProductController {
 			return "redirect:/getproduct";
 		}
 
+	}
+
+	@PostMapping("/search")
+	public String Search(Model model, String keyword) {
+		if (keyword != null) {
+			model.addAttribute(productService.getProducts(keyword));
+			return "getProduct";
+		} else {
+			model.addAttribute(productService.getProducts());
+			return "getProduct";
+		}
 	}
 }

@@ -9,7 +9,10 @@
 
 <body>
 	<h1 align="center">Product</h1>
-	<span style="color:green;" align="center" th:text="${successMsg}"></span>
+	<form align="center" th:action="@{/search}" th:object="${Product}" method="post">
+		<input type="text" name="searchProduct" placeholder="Name Product">
+		<input type="submit" value="search" class="btn btn-success">
+	</form>
 	<table align="center">
 		<tr>
 			<th>San pham</th>
