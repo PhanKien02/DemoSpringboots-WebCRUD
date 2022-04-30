@@ -3,6 +3,7 @@ package example.demo.Security;
 import java.util.Collection;
 import java.util.Collections;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,18 +12,16 @@ import example.demo.Model.User;
 
 public class MyUserDetail implements UserDetails {
 
-    private User user;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(user.getRoles()));
-    }
+	private static final long serialVersionUID = 1L;
+	private User user;
 
     public MyUserDetail(User user) {
         this.user = user;
     }
-
-    public MyUserDetail() {
+   
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
     }
 
     @Override
@@ -54,5 +53,7 @@ public class MyUserDetail implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 
 }

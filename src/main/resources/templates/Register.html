@@ -2,32 +2,29 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-<title>Register Account</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+	<title>Register Account</title>
 </head>
 
 <body>
 	<h1 align="center">Sign up</h1>
-	<form align="center" th:action="@{/Register}" th:object="${User}"
-		method="post">
+	<form align="center" th:action="@{/Register}" th:object="${User}" method="post">
 		<fieldset>
 			<div class="form-group">
-				<label>UserName</label> <input type="text" th:field="*{userName}">
+				<label>UserName</label>
+				<input type="text" th:field="*{userName}">
 			</div>
 			<div class="form=group">
-				<label>Password</label> <input type="password"
-					th:field="*{password}">
+				<label>Password</label>
+				 <input type="password" th:field="*{password}">
 			</div>
 			<div class="form-group">
-				<input type="radio" value="User" name="roles"> <label
-					for="User">User</label> <input type="radio" value="Admin"
-					name="roles"> <label for="User">Admin</label>
+				<input th:field="*{role}" type="radio" value="User" name="roles"> <label for="User">User</label>
+				<input th:field="*{role}" type="radio" value="Admin" name="roles"> <label for="User">Admin</label>
 			</div>
-			<div th:if="${param.error}" style="color: red;">
-			Tài khoản đăng kí không hợp lệ</div>
-			<div class="form-actions">
-				<button type="submit" class="btn btn-success">Đăng kí</button>
+			<p style="color:red;" th:text="${message}"></p>
+			<button type="submit" class="btn btn-success">Đăng kí</button>
 			</div>
 		</fieldset>
 	</form>

@@ -11,7 +11,7 @@ import example.demo.Model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-
+    // tim danh sach san pham theo ten
     @Query(value = "select * from Product as p where p.nameProduct = :nameProduct", nativeQuery = true)
     List<Product> findByNameProduct(@Param("nameProduct") String nameProduct);
 }

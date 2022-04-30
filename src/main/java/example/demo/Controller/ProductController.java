@@ -1,5 +1,7 @@
 package example.demo.Controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,17 +67,19 @@ public class ProductController {
 			productService.editProduct(product);
 			return "redirect:/getproduct";
 		}
-
 	}
 
 	@PostMapping("/search")
-	public String Search(Model model, String keyword) {
-		if (keyword != null) {
-			model.addAttribute(productService.getProducts(keyword));
+	public String Search(Model model, @Param("nameProduct") String nameProduct) {
+		if (nameProduct != "") {
+			// Lấy danh sách san pham có ten nameProduct
+			List<Product> products = productService.getProducts(nameProduct);
+			model.addAttribute(products);
 			return "getProduct";
 		} else {
 			model.addAttribute(productService.getProducts());
 			return "getProduct";
 		}
 	}
+
 }

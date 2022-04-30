@@ -13,13 +13,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	// public List<Product> getProducts(Integer limit) {
-	// return Optional.ofNullable(limit)
-	// .map(value -> productRepository.findAll(PageRequest.of(0,
-	// value)).getContent())
-	// .orElseGet(() -> productRepository.findAll());
-	// }
-	public Iterable<Product> getProducts() {
+	public List<Product> getProducts() {
 		return productRepository.findAll();
 	}
 

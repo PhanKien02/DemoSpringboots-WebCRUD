@@ -1,5 +1,8 @@
 package example.demo.Service;
 
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,14 +19,16 @@ public class UserDetailService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
+  @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUserName(username);
-
         if (user == null) {
-            throw new UsernameNotFoundException("ten dang nhap khong ton tai");
+            throw new UsernameNotFoundException("User not found");
         }
         return new MyUserDetail(user);
+        }
+        
     }
-}
+
+
