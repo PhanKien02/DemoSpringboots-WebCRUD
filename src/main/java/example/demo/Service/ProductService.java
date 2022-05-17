@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import example.demo.Model.Product;
+import example.demo.Entity.ProductEntity;
 import example.demo.Repository.ProductRepository;
 
 @Service
@@ -13,11 +13,11 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	public List<Product> getProducts() {
+	public List<ProductEntity> getProducts() {
 		return productRepository.findAll();
 	}
 
-	public Product addProduct(Product product) {
+	public ProductEntity addProduct(ProductEntity product) {
 		return productRepository.save(product);
 	}
 
@@ -25,15 +25,15 @@ public class ProductService {
 		productRepository.deleteById(id);
 	}
 
-	public Product getProduct(Integer id) {
+	public ProductEntity getProduct(Integer id) {
 		return productRepository.getById(id);
 	}
 
-	public Product editProduct(Product product) {
+	public ProductEntity editProduct(ProductEntity product) {
 		return productRepository.save(product);
 	}
 
-	public List<Product> getProducts(String nameProduct) {
+	public List<ProductEntity> getProducts(String nameProduct) {
 		return productRepository.findByNameProduct(nameProduct);
 	}
 }

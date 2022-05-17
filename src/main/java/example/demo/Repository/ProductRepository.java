@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import example.demo.Model.Product;
+import example.demo.Entity.ProductEntity;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
     // tim danh sach san pham theo ten
     @Query(value = "select * from Product as p where p.nameProduct = :nameProduct", nativeQuery = true)
-    List<Product> findByNameProduct(@Param("nameProduct") String nameProduct);
+    List<ProductEntity> findByNameProduct(@Param("nameProduct") String nameProduct);
 }

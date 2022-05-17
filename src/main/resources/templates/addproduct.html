@@ -2,26 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link th:href="@{/css/bootstrap.css}"rel="stylesheet"/>
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
 <title>Add Product</title>
 </head>
 <body>
 	<h1 align="center">Them san pham</h1>
-	<form align="center" th:action="@{/addproduct}" th:object="${Product}" method="post">
+	<form align="center" th:action="@{/addproduct}" th:object="${Product}"
+		method="post">
 		<div class="form-group">
-			<label>ten san pham</label> 
-			<input type="text" th:field="*{nameProduct}"/>
-			<p style="color:red;" th:if="${#fields.hasErrors('nameProduct')}" th:errors="*{nameProduct}") ></p>
+			<label>ten san pham</label> <input type="text"
+				name="nameProduct" />
+			<p style="color: red;" th:if="${#fields.hasErrors('nameProduct')}"
+				th:errors="*{nameProduct}" )></p>
 		</div>
 		<div class="form-group">
-			<label>Don gia</label> 
-			<input type ="text" th:field="*{unitPrice}" placeholder="unitPrice"/>
-			<p style="color:red;" th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}")></p>
+			<label>Don gia</label> <input type="text" name="unitPrice"
+				placeholder="unitPrice" />
+			<p style="color: red;"  th:if="${#fields.hasErrors('unitPrice')}"
+				th:errors="*{unitPrice}" )></p>
+		</div>
+		<div class="form-group">
+			<label for="cars">Choose a car:</label>
+			<select name="category" id="cars">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="mercedes">Mercedes</option>
+				<option value="audi">Audi</option>
+			</select>
 		</div>
 		<div>
-			<label>So luong</label>
-			<input type ="number" th:field="*{amount}" placeholder="amount"/>
-			<p style="color:red;" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}")></p>
+			<label>So luong</label> <input type="number" name="amount"
+				placeholder="amount" />
+			<p style="color: red;" th:if="${#fields.hasErrors('amount')}"
+				th:errors="*{amount}" )></p>
 		</div>
 		<p>
 			<button class="btn btn-success">Them</button>

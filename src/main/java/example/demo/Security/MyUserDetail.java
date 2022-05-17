@@ -3,27 +3,23 @@ package example.demo.Security;
 import java.util.Collection;
 import java.util.Collections;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import example.demo.Model.User;
+import example.demo.Entity.RoleEntity;
+import example.demo.Entity.UserEntity;
 
 public class MyUserDetail implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	private User user;
+	private UserEntity user;
 
-    public MyUserDetail(User user) {
+    public MyUserDetail(UserEntity user) {
         this.user = user;
     }
    
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
-    }
-
+  
     @Override
     public String getPassword() {
         return user.getPassword();
@@ -53,6 +49,15 @@ public class MyUserDetail implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
 
 
 

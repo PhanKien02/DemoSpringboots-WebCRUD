@@ -1,4 +1,4 @@
-package example.demo.Model;
+package example.demo.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,16 +8,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "product")
-public class Product {
+public class ProductEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@NotEmpty(message = "tên sản phẩm không được để trống")
+	@NotNull(message = "tên sản phẩm không được null")
 	@Column(name = "nameproduct")
 	private String nameProduct;
+	@Column(name = "category")
+	@NotNull(message = "category không được null")
+	private String category;
 	@Min(value = 1, message = "đơn giá phải lớn hơn 1")
 	@Column(name = "unitprice")
 	private double unitPrice;
@@ -25,36 +38,5 @@ public class Product {
 	@Column(name = "amount")
 	private int amount;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNameProduct() {
-		return nameProduct;
-	}
-
-	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
-	}
-
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
 
 }
