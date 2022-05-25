@@ -10,6 +10,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Columns;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,10 +36,11 @@ public class ProductEntity {
 	private String category;
 	@Min(value = 1, message = "đơn giá phải lớn hơn 1")
 	@Column(name = "unitprice")
-	private double unitPrice;
-	@Min(message = " số lượng sản phẩm phải lớn hơn 1", value = 1)
+	private long unitPrice;
+	@Min( value = 1,message = " số lượng sản phẩm phải lớn hơn 1")
 	@Column(name = "amount")
 	private int amount;
-
-
+	@Column(name = "imageUrl")
+	private String imageUrl;
+	
 }

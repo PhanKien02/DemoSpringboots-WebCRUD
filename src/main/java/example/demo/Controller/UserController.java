@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import example.demo.Entity.UserEntity;
 import example.demo.Service.UserDetailService;
@@ -69,13 +70,14 @@ public class UserController {
 	}
 
 	@GetMapping("/getUser")
-	public String name(Model model) {
-		List<UserEntity> userEntities = userDetailService.getAllUser();
-		model.addAttribute("userList" ,userEntities);
+	public String getAllUser(Model model) {
+		List<UserEntity> userEntedites = userDetailService.getAllUser();
+		model.addAttribute("userList" ,userEntedites);
 		return"User";
 	}
-	@GetMapping("/userProfile")
-	public String userProfile() {
+	@GetMapping("/edit_profile/{user_id}")
+	public String editProfile(@RequestParam("id") Integer id, Model model) {
+		model.addAttribute("User", userDetailService.findById(id));
 		return "userProfile";
 	}
 }

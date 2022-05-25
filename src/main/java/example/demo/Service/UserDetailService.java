@@ -3,6 +3,7 @@ package example.demo.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -65,13 +66,17 @@ public class UserDetailService implements UserDetailsService {
 	public UserEntity findByUserName(String userName) {
 		return userRepository.findByUserName(userName) ;
 	}
+	// tìm user theo Email
 	public UserEntity findByEmail(String Email) {
 		return userRepository.findByEmail(Email);
 	}
-//	// lấy tất cả các user
+	//Lấy user theo id
+	public UserEntity findById(Integer id) {
+		return userRepository.getById(id);
+	}
+	// lấy tất cả các user
 	public List<UserEntity> getAllUser() {
 		List<UserEntity> userEntities = userRepository.findAll();
-		
 		return userEntities;                           
 	}
 }

@@ -2,75 +2,87 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register</title>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: #17a2b8;
-			height: 100vh;
-		}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #17a2b8;
+	height: 100vh;
+}
 
-		#login .container #login-row #login-column #login-box {
-			margin-top: 120px;
-			max-width: 600px;
-			height: 500px;
-			border: 1px solid #9C9C9C;
-			background-color: #EAEAEA;
-		}
+#login .container #login-row #login-column #login-box {
+	margin-top: 120px;
+	max-width: 600px;
+	height: 500px;
+	border: 1px solid #9C9C9C;
+	background-color: #EAEAEA;
+}
 
-		#login .container #login-row #login-column #login-box #login-form {
-			padding: 20px;
-		}
+#login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+}
 
-		#login .container #login-row #login-column #login-box #login-form #register-link {
-			margin-top: -85px;
-		}
-		.mewssage{
-			color: red;
-		}
-	</style>
+#login .container #login-row #login-column #login-box #login-form #register-link
+	{
+	margin-top: -85px;
+}
+
+.mewssage {
+	color: red;
+}
+</style>
 </head>
 
 <body>
 	<div id="login">
-			<div class="container">
-			<div id="login-row" class="row justify-content-center align-items-center">
+		<div class="container">
+			<div id="login-row"
+				class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
-						<form id="login-form" class="form" th:action="@{Register}" th:object="${UserEntity}" method="post">
+						<form id="login-form" class="form" th:action="@{Register}"
+							th:object="${UserEntity}" method="post">
 							<h3 class="text-center text-info">Register</h3>
 							<p class="mewssage" align="center" th:text="${message}"></p>
-							
+
 							<div class="form-group">
 								<label for="username" class="text-info">FullName:</label><br>
-								<input type="text" name="fullName" th:field="*{full_Name}"  class="form-control">
+								<input type="text" name="fullName" th:field="*{full_Name}"
+									class="form-control">
 								<p style="color: red;" th:if="${#fields.hasErrors('full_Name')}"
 									th:errors="*{fullName}" )></p>
 							</div>
 							<div class="form-group">
 								<label for="username" class="text-info">Email:</label><br>
-								<input type="Email" name="Email" th:field="*{email}"  class="form-control">
+								<input type="Email" name="Email" th:field="*{email}"
+									class="form-control">
 								<p style="color: red;" th:if="${#fields.hasErrors('Email')}"
-								th:errors="*{Email}" )></p>
+									th:errors="*{Email}" )></p>
 							</div>
 							<div class="form-group">
 								<label for="password" class="text-info">UserName:</label><br>
-								<input type="text" name="username" th:field="*{userName}"  id="password" class="form-control">
-								<p style="color: red;" th:if="${#fields.hasErrors('userName')}"	th:errors="*{userName}" )></p>
-							</div>	
+								<input type="text" name="username" th:field="*{userName}"
+									id="password" class="form-control">
+								<p style="color: red;" th:if="${#fields.hasErrors('userName')}"
+									th:errors="*{userName}" )></p>
+							</div>
 							<div class="form-group">
 								<label for="password" name="password" class="text-info">Password:</label><br>
-								<input type="password" th:field="*{password}"  id="password" class="form-control">
-								<p style="color: red;" th:if="${#fields.hasErrors('password')}"	th:errors="*{password}" )></p>
+								<input type="password" th:field="*{password}" id="password"
+									class="form-control">
+								<p style="color: red;" th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}" )></p>
 							</div>
 							<div align="center" class="form-group">
-							<br>
-								<input  type="submit" name="submit" class="btn btn-info btn-md" value="Register">
+								<br> <input type="submit" name="submit"
+									class="btn btn-info btn-md" value="Register">
 							</div>
 						</form>
 					</div>

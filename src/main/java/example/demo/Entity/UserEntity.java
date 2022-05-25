@@ -47,8 +47,13 @@ public class UserEntity implements Serializable {
 	@NotEmpty(message = "password không được để trống")
 	@Column(name = "passwords")
 	private String password;
+	@Column(name = "Address")
+	private String Address;
+	@Column(name = "AboutMe")
+	private String AboutMe;
 	@ManyToMany
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<RoleEntity> roles;
 
+	
 }

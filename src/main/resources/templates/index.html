@@ -7,7 +7,7 @@
 	th:href="@{img/apple-icon.png}" />
 <link rel="icon" type="image/png" th:href="@{img/favicon.png}" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Paper Dashboard 2 by Creative Tim</title>
+<title>Index</title>
 <meta
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
 	name="viewport" />
@@ -43,25 +43,6 @@
 					<li><a th:href="@{getUser}">
 
 							<p>Danh Sách user</p>
-					</a></li>
-					<li><a href="./notifications.html">
-
-							<p>Notifications</p>
-					</a></li>
-					<li><a th:href="@{userProfile}">
-
-							<p>User Profile</p>
-					</a></li>
-					<li><a href="./tables.html">
-
-							<p>Table List</p>
-					</a></li>
-					<li><a href="./typography.html">
-							<p>Typography</p>
-					</a></li>
-					<li class="active-pro"><a href="./upgrade.html">
-
-							<p>Upgrade to PRO</p>
 					</a></li>
 				</ul>
 			</div>
@@ -111,24 +92,37 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">Danh Sách Sản Phẩm</h4>
+								<p th:text="${successMsg}"></p>
 							</div>
 							<div class="col-md-12">
 								<form th:action="@{/search}" th:object="${Product}"
 									method="post">
 									<div class="input-group no-border">
-										<input type="text" name="nameProduct" value=""
-											class="form-control" placeholder="Search..." />
+										<div>
+											<input type="text" name="nameProduct" value=""
+												class="form-control" placeholder="Search..." />
+										</div>
 										<div class="input-group-append">
 											<button type="submit" class="input-group-text">
 												<i class="fa-solid fa-magnifying-glass"></i>
 											</button>
 										</div>
+										<div class="input-group-append">
+											<select name="category" id="category">
+											<option value=""></option>
+												<option value="laptop">laptop</option>
+												<option value="PC">PC</option>
+												<option value="Smartphone">smartphone</option>
+												<option value="other">other</option>
+											</select>
+										</div>
+										
 									</div>
 								</form>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table">
+									<!-- <table class="table">
 										<thead align="center" class="text-primary">
 											<th>Tên San pham</th>
 											<th>Loại</th>
@@ -140,7 +134,7 @@
 										<tr align="center" th:each="product : ${products}">
 											<td th:text="${product.nameProduct}"></td>
 											<td th:text="${product.category}"></td>
-											<td th:text="${product.unitPrice}" ></td>
+											<td th:text="${product.unitPrice}"></td>
 											<td th:text="${product.amount}"></td>
 											<td><a th:href="@{'/delete?id=' +${product.id}}"
 												class="btn btn-danger">-Xoa San Pham</a></td>
@@ -151,7 +145,37 @@
 											<td><a th:href="@{/addproduct}" class="btn btn-success">Them
 													san pham</a></td>
 										</tr>
-									</table>
+									</table> -->
+									<div class="addproduct">
+										<a th:href="@{/addproduct}" class="btn btn-success">Them
+											san pham</a>
+									</div>
+									<div class="container">
+										<div class="row listProduct">
+											<div class="product" th:each="product : ${products}">
+												<div class="image">
+													<img th:src="@{${product.imageUrl}}"
+														alt="hình ảnh sản phẩm">
+												</div>
+												<div class="Category">
+													<h5 th:text="${product.nameProduct}">tên sản phẩm</h5>
+													<h6 th:text="${product.category}">category</h6>
+												</div>
+												<div class="infor">
+													<span th:text="${product.amount}">số lượng</span> <span
+														th:text="${product.unitPrice}"> đơn giá</span>
+												</div>
+												<div class="edit">
+													<a th:href="@{'/editproduct?id=' +${product.id}}"
+														class="btn btn-primary"><i
+														class="fa-solid fa-pen-to-square"></i></a> <a
+														th:href="@{'/delete?id=' +${product.id}}"
+														class="btn btn-danger"><i
+														class="fa-solid fa-trash-can"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -174,8 +198,7 @@
 						<div class="credits ml-auto">
 							<span class="copyright"> © <script>
 								document.write(new Date().getFullYear());
-							</script> , made with <i
-								class="fa fa-heart heart"></i> by Creative Tim
+							</script> , made with <i class="fa fa-heart heart"></i> by Creative Tim
 							</span>
 						</div>
 					</div>
